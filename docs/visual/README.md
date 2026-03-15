@@ -149,4 +149,417 @@ Vite sẽ chạy dev server (mặc định `http://localhost:5173`) từ thư m�
    - export `graph.json`
    - cập nhật markdown tương ứng
    - đảm bảo `structure.md` các folder liên quan đã update.
+---
+
+# React Flow Visual Documentation Workspace
+
+This directory provides a **visual documentation workspace** built with **React Flow**.
+It allows both humans and AI agents to explore, edit, and synchronize project documentation using a **graph-based interface**.
+
+The visualization is designed around the structure:
+
+```
+Feature → Workflow → File
+```
+
+Markdown documentation remains the **source of truth**, while the graph provides an **interactive view and editing surface**.
+
+---
+
+# Purpose
+
+This workspace serves three main goals:
+
+1. **Visualize project documentation**
+2. **Navigate features and workflows**
+3. **Synchronize docs and visual graph editing**
+
+It helps developers and agents understand:
+
+* project architecture
+* feature boundaries
+* workflow flows
+* relationships between documentation and implementation files
+
+---
+
+# Directory Structure
+
+```
+docs/visual/
+
+  README.md
+  graph.json
+
+  package.json
+  index.html
+
+  src/
+    main.tsx
+    App.tsx
+
+    components/
+      GraphCanvas.tsx
+      Sidebar.tsx
+      NodeInspector.tsx
+      MarkdownEditor.tsx
+      Toolbar.tsx
+
+    lib/
+      graph.ts
+      schema.ts
+      markdown.ts
+      sync.ts
+
+    styles/
+      app.css
+```
+
+### Key files
+
+| File                 | Purpose                                |
+| -------------------- | -------------------------------------- |
+| `graph.json`         | Graph data used by React Flow          |
+| `App.tsx`            | Main application                       |
+| `GraphCanvas.tsx`    | React Flow canvas                      |
+| `NodeInspector.tsx`  | Node metadata editor                   |
+| `MarkdownEditor.tsx` | Markdown editing panel                 |
+| `sync.ts`            | Logic for docs ↔ graph synchronization |
+
+---
+
+# Installation
+
+Navigate to the visual workspace:
+
+```bash
+cd docs/visual
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+or
+
+```bash
+pnpm install
+```
+
+---
+
+# Run the Visual Workspace
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+or
+
+```bash
+pnpm dev
+```
+
+Then open the browser at:
+
+```
+http://localhost:5173
+```
+
+You will see the **React Flow visual graph editor**.
+
+---
+
+# Graph Model
+
+The graph is stored in:
+
+```
+docs/visual/graph.json
+```
+
+The graph represents relationships between documentation and project structure.
+
+Hierarchy:
+
+```
+Feature
+  └ Workflow
+      └ File
+```
+
+---
+
+# Node Schema
+
+Each node must contain:
+
+```json
+{
+  "id": "unique-id",
+  "type": "feature | workflow | file | folder | note",
+  "label": "human readable name",
+  "path": "linked file path",
+  "parentId": "optional parent node",
+  "feature": "feature name",
+  "workflow": "workflow name",
+  "description": "short summary",
+  "tags": [],
+  "status": "draft | active | deprecated",
+  "position": { "x": 0, "y": 0 },
+  "lastSyncedAt": "timestamp"
+}
+```
+
+---
+
+# Edge Schema
+
+Edges represent relationships between nodes.
+
+```json
+{
+  "id": "edge-id",
+  "source": "node-id",
+  "target": "node-id",
+  "relation": "contains | uses | depends_on | documents | implements",
+  "label": "optional label"
+}
+```
+
+---
+
+# Editing the Graph
+
+The React Flow UI allows:
+
+* adding nodes
+* deleting nodes
+* adding edges
+* deleting edges
+* editing node metadata
+* linking nodes to markdown docs
+* editing markdown content
+
+Node metadata can include:
+
+* label
+* description
+* linked file path
+* feature
+* workflow
+* tags
+* status
+
+---
+
+# Opening Documentation
+
+Nodes that reference markdown files can be opened in the editor.
+
+Example node:
+
+```
+docs/features/auth.md
+```
+
+The editor panel allows:
+
+* viewing markdown
+* editing markdown
+* saving changes
+
+---
+
+# Two-Way Synchronization
+
+The system supports **two-way sync**.
+
+### Docs → Graph
+
+When markdown documentation changes:
+
+* node labels may update
+* relationships may update
+* new nodes may be created
+
+### Graph → Docs
+
+When graph nodes are edited:
+
+* markdown files may be created
+* markdown metadata may update
+* file paths may update
+
+Docs remain the **source of truth**.
+
+---
+
+# Documentation Conventions
+
+The project documentation follows a consistent structure.
+
+Example:
+
+```
+# Title
+
+## Purpose
+
+## Feature
+
+## Workflow
+
+## Related Files
+
+## Dependencies
+
+## Notes
+
+## For Agents
+```
+
+Agents should update **structured sections only** when syncing.
+
+Free-form text should be preserved.
+
+---
+
+# structure.md
+
+Each folder may contain a `structure.md` file.
+
+These files describe:
+
+* folder purpose
+* important files
+* related features
+* workflows
+* dependencies
+
+Agents must read `structure.md` before modifying the folder.
+
+---
+
+# Creating Nodes
+
+When adding a new node:
+
+1. choose node type
+2. define label
+3. define linked path
+4. optionally create markdown file
+
+Example types:
+
+```
+feature
+workflow
+file
+folder
+note
+```
+
+---
+
+# Recommended Workflow
+
+Typical workflow:
+
+### explore project
+
+Open the visual workspace and navigate nodes.
+
+### add a feature
+
+Create:
+
+```
+Feature node
+Workflow node
+File node
+```
+
+### edit documentation
+
+Open markdown via the node editor.
+
+### update relationships
+
+Create edges between workflows and files.
+
+---
+
+# Best Practices
+
+Keep the graph readable.
+
+Avoid:
+
+* too many nodes
+* unclear labels
+* unnecessary node types
+
+Prefer:
+
+```
+Feature → Workflow → File
+```
+
+Use clear names.
+
+Keep IDs stable.
+
+---
+
+# When Updating the Repository
+
+Always keep these synchronized:
+
+```
+docs markdown
+structure.md
+graph.json
+React Flow UI
+```
+
+Never leave them inconsistent.
+
+---
+
+# Limitations
+
+Current implementation may not automatically detect every documentation change.
+
+Agents or developers may need to trigger updates manually.
+
+---
+
+# Future Improvements
+
+Possible improvements:
+
+* automatic doc scanning
+* automatic graph generation
+* code dependency graph integration
+* search and filtering
+* workflow timelines
+* AI-assisted graph generation
+
+---
+
+# Summary
+
+This workspace provides:
+
+* visual documentation explorer
+* editable architecture graph
+* markdown-linked documentation system
+* feature/workflow oriented visualization
+
+It is designed to help **both humans and AI agents understand the project structure quickly**.
 
