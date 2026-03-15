@@ -1,97 +1,192 @@
-## Vibe Code Template
-
-English README for using this template (project, docs, agents, Cursor skills).
+# Vibe Code Template
 
 ---
 
 ## 1. Overview
 
-This repo is a **Next.js-based template** with:
+This repo is a **Next.js-based template** designed for **AI-assisted development with strong documentation discipline**.
 
-- **Application code** (frontend + backend) following strict architecture rules
-- **Markdown docs** in `docs/` as single source of truth
-- **Visual docs workspace** in `docs/visual/` (React Flow)
-- **Cursor rules & skills** in `.cursor/` to make AI agents code exactly the way you want
+It combines:
 
-Use it as a starting point for serious production apps where code, docs, and AI agents must stay in sync.
+- structured **application code**
+- **Markdown documentation as source of truth**
+- a **visual documentation workspace**
+- **AI agent rules and skills**
 
----
-
-## 2. Requirements
-
-- Node.js 18+
-- pnpm / npm / yarn (pick one)
-- Git
-- Cursor (recommended) or VS Code
+This ensures **code, docs, and AI guidance stay synchronized**.
 
 ---
 
-## 3. Getting Started
+## System Overview
+
+```mermaid
+flowchart LR
+
+Dev[Developer]
+Agent[AI Agent]
+
+Docs[Markdown Docs]
+Graph[Visual Graph\nReact Flow]
+Code[Application Code]
+
+Dev --> Docs
+Dev --> Graph
+
+Agent --> Docs
+Agent --> Code
+
+Docs --> Graph
+Graph --> Docs
+
+Docs --> Code
+Code --> Docs
+````
+
+Markdown docs remain the **source of truth**, while the graph provides a **visual navigation layer**.
+
+---
+
+# 2. Requirements
+
+* Node.js 18+
+* pnpm / npm / yarn
+* Git
+* Cursor (recommended) or VS Code
+
+---
+
+# 3. Getting Started
 
 ```bash
 git clone <this-repo-url> my-app
 cd my-app
 
-# install deps (example with pnpm)
 pnpm install
-
-# run app (adjust if your app folder is different)
 pnpm dev
 ```
 
-> If the app is inside a subfolder (for example `client/`), `cd` into that folder and run the same commands there.
+If the app lives inside a subfolder (for example `client/`):
+
+```bash
+cd client
+pnpm install
+pnpm dev
+```
 
 ---
 
-## 4. Project Structure (high level)
+# 4. Project Structure
+
+High-level repository structure:
 
 ```text
 .
-├─ docs/                   # Product, architecture & process docs (source of truth)
-  ├─ Project-Description/ # Product design split into focused files
-  ├─visual/              # React Flow visual docs workspace
-├─? .cursor/                # Cursor rules & skills for agents
-  ├─ rules/               # Always-on project rules
-  ├─skills-cursor/       # Reusable skills (create-rule, create-skill, ...)
- ...                     # App source (Next.js, API, etc.)
+├─ docs/                     # Documentation (source of truth)
+│  ├─ Project-Description/   # Product architecture & feature specs
+│  └─ visual/                # React Flow visual documentation
+│
+├─ .cursor/                  # Cursor AI rules and skills
+│  ├─ rules/
+│  └─ skills/
+│
+└─ app source code           # Next.js application
 ```
 
-> Before touching any folder, check its local `structure.md` (if present) to understand intent and constraints.
+### Architecture Relationship
+
+```mermaid
+flowchart TD
+
+Docs[docs/]
+Visual[docs/visual/]
+Cursor[.cursor/]
+Code[Application Code]
+
+Docs --> Visual
+Docs --> Code
+Cursor --> Code
+Cursor --> Docs
+```
+
+Before editing any folder, check its **`structure.md`** if present.
 
 ---
 
-## 5. Docs System (`docs/`)
+# 5. Documentation System (`docs/`)
 
-- **Source of truth** for product & architecture is Markdown under `docs/`.
-- `docs/Project-Description/structure.md` explains how the original big product-design doc is split:
-  - `product-design-01-summary.md` ? executive summary
-  - `product-design-02-assumptions-scope.md` ? assumptions & scope
-  - `product-design-03-features-spec.md` ? feature list & execution spec
-  - `product-design-04-nextjs-frontend-architecture.md` ? frontend architecture
-  - `product-design-05-api-design.md` ? API design (REST & GraphQL)
-  - `product-design-06-database-schema.md` ? DB schema / ERD
-  - `product-design-07-nextjs-examples.md` ? JSON + Next.js examples
-  - `product-design-08-dev-checklist-timeline-tradeoffs.md` ? checklists, timeline, trade-offs
+All product and architecture documentation lives in **Markdown under `docs/`**.
 
-**Rules when you change code/features:**
+These documents act as the **single source of truth**.
 
-- Keep `docs/` in sync with the implementation
-- When you add/remove/move features:
-  - Update the relevant Markdown under `docs/`
-  - Update `structure.md` in any affected folder
-  - If the visual graph is used, sync `docs/visual/graph.json` as well
+### Product Design Documentation
+
+```mermaid
+flowchart TD
+
+A[product-design-01-summary]
+B[product-design-02-assumptions-scope]
+C[product-design-03-features-spec]
+D[product-design-04-nextjs-frontend-architecture]
+E[product-design-05-api-design]
+F[product-design-06-database-schema]
+G[product-design-07-nextjs-examples]
+H[product-design-08-dev-checklist-timeline-tradeoffs]
+
+A --> B
+B --> C
+C --> D
+D --> E
+E --> F
+F --> G
+G --> H
+```
+
+### Documentation Rules
+
+Whenever code changes:
+
+1. Update relevant docs under `docs/`
+2. Update `structure.md` if folder structure changes
+3. Sync `docs/visual/graph.json` if visual graph is used
 
 ---
 
-## 6. Visual Docs Workspace (`docs/visual/`)
+# 6. Visual Docs Workspace (`docs/visual/`)
 
-This is a **React Flow** workspace that lets you edit a graph:
+The **visual workspace** provides a **React Flow graph editor** for exploring project structure.
 
-```text
-Feature -> Workflow -> File
+The visualization hierarchy:
+
+```mermaid
+flowchart TD
+
+Feature --> Workflow
+Workflow --> File
 ```
 
-### Run the visual workspace
+Example:
+
+```mermaid
+flowchart TD
+
+AuthFeature[Feature: Auth]
+
+LoginWorkflow[Workflow: Login Flow]
+RegisterWorkflow[Workflow: Register Flow]
+
+LoginPage[File: login.tsx]
+AuthAPI[File: auth.controller.ts]
+
+AuthFeature --> LoginWorkflow
+AuthFeature --> RegisterWorkflow
+
+LoginWorkflow --> LoginPage
+LoginWorkflow --> AuthAPI
+```
+
+---
+
+## Running the Visual Workspace
 
 ```bash
 cd docs/visual
@@ -99,90 +194,199 @@ npm install
 npm run dev
 ```
 
-Vite will start at `http://localhost:5173` (by default).
+Then open:
 
-### How to use it
-
-- Load and edit the graph stored in `docs/visual/graph.json`
-- Each node can map to:
-  - a **feature**
-  - a **workflow**
-  - a **file/folder**
-  - a **note**
-- If `node.path` points to a Markdown file in `docs/`, the right panel lets you:
-  - preview/edit the content
-  - download or copy it (then you manually paste back into the repo)
-
-**Important:** the visual workspace is frontend-only, so it **cannot write to the repo**.  
-Always export/download and then commit changes manually.
-
-### Docs ? Graph workflow (recommended)
-
-- **Docs ? Graph**
-  - Edit or create docs under `docs/`
-  - Open the visual workspace, add/update nodes/edges
-  - Export `graph.json` and commit with the docs
-- **Graph ? Docs**
-  - Update nodes/edges in the visual workspace
-  - Export `graph.json`
-  - Create/update the corresponding Markdown files under `docs/`
-  - Update any affected `structure.md`
-
-When there is a conflict, **Markdown docs win**; the graph is just a projection.
+```
+http://localhost:5173
+```
 
 ---
 
-## 7. Cursor Rules & Skills (`.cursor/`)
+# Visual Graph Architecture
 
-This template is optimized for Cursor so that agents behave consistently.
+```mermaid
+flowchart LR
 
-### 7.1 Rules (`.cursor/rules/`)
+GraphJSON[graph.json]
 
-- Files in `.cursor/rules/` are **always-on constraints** for agents.
-- Examples:
-  - `01-identity.mdc` ? define agent as full?stack engineer
-  - `02-task-classify.mdc` ? classify tasks (consult/build/debug/optimize)
-  - `04-mode-build.mdc`, `05-mode-debug.mdc`, `06-mode-optimize.mdc` ? mode-specific standards
-  - `ui-rule.mdc` ? shadcn + tweakcn UI standards for frontend
-  - `write-docs-for-project.mdc` ? keep docs and `structure.md` synced
+ReactFlow[React Flow UI]
+MarkdownDocs[docs/*.md]
 
-You normally **do not edit these casually**. Treat them like project-wide coding standards.
+GraphJSON --> ReactFlow
+ReactFlow --> GraphJSON
 
-### 7.2 Cursor Skills (`.cursor/skills*`)
+MarkdownDocs --> GraphJSON
+GraphJSON --> MarkdownDocs
+```
 
-- Skills are re-usable capabilities that agents can call when relevant.
-- Examples in this template:
-  - `skills/devops/` ? Docker & deployment expertise
-  - `skills/nextjs/` ? frontend skill when working in client Next.js code
-  - `skills/ui-ux-pro-max/` ? UI/UX & design system guidance
-  - `skills-cursor/create-rule/` ? help generate new `.cursor/rules`
-  - `skills-cursor/create-skill/` ? help create new skills
-
-**How to extend:**
-
-1. Copy an existing skill folder as a starting point
-2. Edit its `SKILL.md` to describe:
-   - when it should be used
-   - what it should do
-   - any constraints or patterns
-3. Commit and push; Cursor will pick it up automatically.
+The graph acts as a **visual projection of documentation**.
 
 ---
 
-## 8. Typical Workflow With This Template
+# Docs ↔ Graph Workflow
 
-- **New feature**
-  - Design/update spec in `docs/Project-Description/`
-  - If helpful, map it in `docs/visual/` and export `graph.json`
-  - Implement in app code (follow technical + UI rules)
-  - Keep `structure.md` updated
-- **Refactor / cleanup**
-  - Update docs first (or at the same time)
-  - Ensure `docs/visual/graph.json` and any structure docs still reflect reality
-- **Working with agents**
-  - Let agents read `structure.md` and relevant docs before coding
-  - If you need new behaviors, encode them as:
-    - project rules in `.cursor/rules/`
-    - or focused skills in `.cursor/skills*/`
+### Docs → Graph
 
-This keeps **code, docs, and AI guidance** aligned and prevents the template from drifting over time.
+```mermaid
+flowchart LR
+
+EditDocs[Edit Markdown Docs]
+ParseDocs[Agent parses docs]
+UpdateGraph[Update graph.json]
+RenderGraph[React Flow renders graph]
+
+EditDocs --> ParseDocs --> UpdateGraph --> RenderGraph
+```
+
+### Graph → Docs
+
+```mermaid
+flowchart LR
+
+EditGraph[Edit Graph UI]
+ExportJSON[Export graph.json]
+UpdateDocs[Update Markdown docs]
+
+EditGraph --> ExportJSON --> UpdateDocs
+```
+
+If conflicts occur:
+
+```
+Markdown docs always win.
+```
+
+---
+
+# 7. Cursor Rules & Skills (`.cursor/`)
+
+The repository includes **Cursor rules and skills** to ensure AI agents behave consistently.
+
+### Rule System
+
+```mermaid
+flowchart TD
+
+Rules[.cursor/rules]
+
+Identity[Agent Identity]
+TaskClassify[Task Classification]
+BuildMode[Build Mode]
+DebugMode[Debug Mode]
+OptimizeMode[Optimize Mode]
+UIRules[UI Rules]
+
+Rules --> Identity
+Rules --> TaskClassify
+Rules --> BuildMode
+Rules --> DebugMode
+Rules --> OptimizeMode
+Rules --> UIRules
+```
+
+These rules enforce:
+
+* architecture consistency
+* UI standards
+* documentation updates
+
+---
+
+### Skills
+
+Skills extend agent capabilities.
+
+```mermaid
+flowchart TD
+
+Skills[Cursor Skills]
+
+DevOps[DevOps]
+NextJS[Next.js]
+UIUX[UI/UX Design]
+CreateRule[Create Rule Skill]
+CreateSkill[Create Skill]
+
+Skills --> DevOps
+Skills --> NextJS
+Skills --> UIUX
+Skills --> CreateRule
+Skills --> CreateSkill
+```
+
+To add a new skill:
+
+1. Copy an existing skill folder
+2. Modify its `SKILL.md`
+3. Commit to repository
+
+---
+
+# 8. Typical Workflow
+
+### New Feature Development
+
+```mermaid
+flowchart LR
+
+Design[Design Feature in Docs]
+Graph[Optional Graph Update]
+Implement[Implement Code]
+SyncDocs[Update Docs]
+Commit[Commit Changes]
+
+Design --> Graph --> Implement --> SyncDocs --> Commit
+```
+
+### Refactoring
+
+```mermaid
+flowchart LR
+
+UpdateDocs[Update Documentation]
+RefactorCode[Refactor Code]
+UpdateGraph[Update Visual Graph]
+
+UpdateDocs --> RefactorCode --> UpdateGraph
+```
+
+---
+
+# Working With AI Agents
+
+Agents should follow this process:
+
+```mermaid
+flowchart TD
+
+ReadStructure[Read structure.md]
+ReadDocs[Read relevant docs]
+UnderstandFeature[Understand Feature]
+ImplementCode[Implement Code]
+UpdateDocs[Update Docs]
+SyncGraph[Sync graph.json]
+
+ReadStructure --> ReadDocs --> UnderstandFeature --> ImplementCode --> UpdateDocs --> SyncGraph
+```
+
+This workflow ensures:
+
+* consistent architecture
+* synchronized docs
+* predictable AI behavior
+
+---
+
+# Summary
+
+This template ensures that:
+
+* **Markdown docs define the system**
+* **React Flow provides visual navigation**
+* **Cursor rules guide AI agents**
+* **Code stays aligned with documentation**
+
+Result:
+
+A **production-ready template** for teams that want **AI-assisted development without losing control of architecture or documentation**.
+
