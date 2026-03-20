@@ -26,7 +26,7 @@ Dev[Developer]
 Agent[AI Agent]
 
 Docs[Markdown Docs]
-Graph[Visual Graph\nReact Flow]
+Graph[Visual Graph-React Flow]
 Code[Application Code]
 
 Dev --> Docs

@@ -40,6 +40,7 @@ Vite sẽ chạy dev server (mặc định `http://localhost:5173`) từ thư m�
 
 - UI luôn cố gắng load `docs/visual/graph.json`.
 - Nếu file trống hoặc thiếu, UI dùng **starter graph** nội bộ trong `src/lib/graph.ts` nhưng bạn vẫn có thể export lại `graph.json`.
+- `graph.json` đang được seed sẵn từ `docs/Architecture/frontend/pages.md`, gồm các cụm `feature -> workflow -> file` và `note` tóm tắt cho từng section lớn.
 - Schema:
 
 ```jsonc
@@ -145,6 +146,7 @@ Vite sẽ chạy dev server (mặc định `http://localhost:5173`) từ thư m�
    - vẽ hình feature → workflow → file
    - kiểm tra nhanh docs còn thiếu
    - thêm `note` nodes cho TODO / missing-doc.
+   - rà nhanh map frontend pages đã được dựng từ `docs/Architecture/frontend/pages.md`.
 4. Khi hoàn tất:
    - export `graph.json`
    - cập nhật markdown tương ứng

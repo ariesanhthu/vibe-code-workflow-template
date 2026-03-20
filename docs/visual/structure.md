@@ -11,6 +11,7 @@
 - **Liên kết**:
   - Gắn với docs dưới `docs/` (đặc biệt `Project-Description` và `Architecture`).
   - Đồ thị tập trung quanh feature → workflow → file, có thể thêm `folder` và `note`.
+  - `graph.json` hiện map các section chính trong `docs/Architecture/frontend/pages.md` thành node `feature`, `workflow`, `file`, và `note`.
 - **Ghi chú cho agent**:
   - Mọi thay đổi feature/workflow/file quan trọng phải được phản ánh cả trong docs và `graph.json`.
   - Nếu tạo thư mục mới dưới `docs/visual/`, hãy thêm/ cập nhật `structure.md` tương ứng.

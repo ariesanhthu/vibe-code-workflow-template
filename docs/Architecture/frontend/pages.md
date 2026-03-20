@@ -698,7 +698,7 @@ auth.ts
 Next.js
 
 ```
-NextJS 14
+NextJS
 App Router
 TypeScript
 ```

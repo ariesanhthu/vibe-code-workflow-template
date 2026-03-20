@@ -1,7 +1,968 @@
 {
   "version": 1,
-  "lastUpdatedAt": "2026-03-15T00:00:00.000Z",
-  "nodes": [],
-  "edges": []
+  "lastUpdatedAt": "2026-03-20T00:00:00.000Z",
+  "nodes": [
+    {
+      "id": "feature-public-website",
+      "type": "feature",
+      "label": "Public Website",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": null,
+      "feature": "Public Website",
+      "workflow": "",
+      "description": "Public-facing discovery flows for homepage, ranking, and KOL profile.",
+      "tags": ["frontend", "public", "discovery"],
+      "status": "active",
+      "position": { "x": 0, "y": 120 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-public-homepage",
+      "type": "workflow",
+      "label": "Homepage",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-public-website",
+      "feature": "Public Website",
+      "workflow": "Homepage",
+      "description": "Landing page with hero, platform explanation, ranking preview, featured campaigns, and CTA.",
+      "tags": ["route:/", "landing"],
+      "status": "active",
+      "position": { "x": 260, "y": 0 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-public-kol-ranking",
+      "type": "workflow",
+      "label": "KOL Ranking Page",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-public-website",
+      "feature": "Public Website",
+      "workflow": "KOL Ranking Page",
+      "description": "Public ranking table with filters by niche, platform, and page.",
+      "tags": ["route:/ranking/kols", "ranking"],
+      "status": "active",
+      "position": { "x": 260, "y": 120 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-public-kol-profile",
+      "type": "workflow",
+      "label": "KOL Public Profile",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-public-website",
+      "feature": "Public Website",
+      "workflow": "KOL Public Profile",
+      "description": "Public KOL profile with stats, campaign history, reviews, and performance tabs.",
+      "tags": ["route:/kol/[id]", "profile"],
+      "status": "active",
+      "position": { "x": 260, "y": 240 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "file-pages-public",
+      "type": "file",
+      "label": "pages.md • Public Website",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-public-website",
+      "feature": "Public Website",
+      "workflow": "",
+      "description": "Public website section inside the frontend pages architecture document.",
+      "tags": ["docs", "architecture"],
+      "status": "active",
+      "position": { "x": 560, "y": 120 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "note-public-website-summary",
+      "type": "note",
+      "label": "Note: routes, components, APIs",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-public-website",
+      "feature": "Public Website",
+      "workflow": "",
+      "description": "Routes: /, /ranking/kols, /kol/[id]. Components: HeroSection, KOLRankingTable, KOLHeader, PerformanceChart. APIs: /api/public/top-kols, /api/public/campaigns, /api/kols/:id.",
+      "tags": ["note", "summary", "frontend"],
+      "status": "active",
+      "position": { "x": 860, "y": 120 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "feature-authentication",
+      "type": "feature",
+      "label": "Authentication",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": null,
+      "feature": "Authentication",
+      "workflow": "",
+      "description": "User entry flows for register and login with role-based redirects.",
+      "tags": ["frontend", "auth"],
+      "status": "active",
+      "position": { "x": 0, "y": 540 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-auth-register",
+      "type": "workflow",
+      "label": "Register",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-authentication",
+      "feature": "Authentication",
+      "workflow": "Register",
+      "description": "Registration form with email, password, confirm password, and role selection.",
+      "tags": ["route:/auth/register", "register"],
+      "status": "active",
+      "position": { "x": 260, "y": 480 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-auth-login",
+      "type": "workflow",
+      "label": "Login",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-authentication",
+      "feature": "Authentication",
+      "workflow": "Login",
+      "description": "Login form returning token, user, role, then redirecting to the correct dashboard.",
+      "tags": ["route:/auth/login", "login"],
+      "status": "active",
+      "position": { "x": 260, "y": 600 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "file-pages-authentication",
+      "type": "file",
+      "label": "pages.md • Authentication",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-authentication",
+      "feature": "Authentication",
+      "workflow": "",
+      "description": "Authentication section inside the frontend pages architecture document.",
+      "tags": ["docs", "auth"],
+      "status": "active",
+      "position": { "x": 560, "y": 540 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "note-authentication-summary",
+      "type": "note",
+      "label": "Note: role-based entry flow",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-authentication",
+      "feature": "Authentication",
+      "workflow": "",
+      "description": "Register API: POST /api/auth/register. Login API: POST /api/auth/login. Redirects: Business -> /dashboard/business, KOL -> /dashboard/kol.",
+      "tags": ["note", "auth", "redirect"],
+      "status": "active",
+      "position": { "x": 860, "y": 540 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "feature-business-dashboard",
+      "type": "feature",
+      "label": "Business Dashboard",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": null,
+      "feature": "Business Dashboard",
+      "workflow": "",
+      "description": "Business-side dashboard, campaign management, detail views, and KOL invitation flow.",
+      "tags": ["frontend", "business", "dashboard"],
+      "status": "active",
+      "position": { "x": 0, "y": 1080 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-business-overview",
+      "type": "workflow",
+      "label": "Business Dashboard Overview",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-business-dashboard",
+      "feature": "Business Dashboard",
+      "workflow": "Business Dashboard Overview",
+      "description": "Overview screen with stats cards, charts, and recent campaigns.",
+      "tags": ["route:/dashboard/business", "analytics"],
+      "status": "active",
+      "position": { "x": 260, "y": 840 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-business-campaign-list",
+      "type": "workflow",
+      "label": "Campaign List",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-business-dashboard",
+      "feature": "Business Dashboard",
+      "workflow": "Campaign List",
+      "description": "Campaign table with status badge and filters.",
+      "tags": ["route:/dashboard/business/campaigns", "table"],
+      "status": "active",
+      "position": { "x": 260, "y": 960 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-business-create-campaign",
+      "type": "workflow",
+      "label": "Create Campaign",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-business-dashboard",
+      "feature": "Business Dashboard",
+      "workflow": "Create Campaign",
+      "description": "Create campaign form with KPI targets, KOL requirements, and date range.",
+      "tags": ["route:/dashboard/business/campaigns/create", "form"],
+      "status": "active",
+      "position": { "x": 260, "y": 1080 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-business-campaign-detail",
+      "type": "workflow",
+      "label": "Campaign Detail",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-business-dashboard",
+      "feature": "Business Dashboard",
+      "workflow": "Campaign Detail",
+      "description": "Campaign detail tabs for overview, participants, KPI, and reviews.",
+      "tags": ["route:/dashboard/business/campaigns/[id]", "detail"],
+      "status": "active",
+      "position": { "x": 260, "y": 1200 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-business-invite-kol",
+      "type": "workflow",
+      "label": "Invite KOL",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-business-dashboard",
+      "feature": "Business Dashboard",
+      "workflow": "Invite KOL",
+      "description": "Modal flow to search KOLs, select them, and send campaign invites.",
+      "tags": ["invite", "modal"],
+      "status": "active",
+      "position": { "x": 260, "y": 1320 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "file-pages-business-dashboard",
+      "type": "file",
+      "label": "pages.md • Business Dashboard",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-business-dashboard",
+      "feature": "Business Dashboard",
+      "workflow": "",
+      "description": "Business dashboard section inside the frontend pages architecture document.",
+      "tags": ["docs", "business"],
+      "status": "active",
+      "position": { "x": 560, "y": 1080 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "note-business-dashboard-summary",
+      "type": "note",
+      "label": "Note: management flow",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-business-dashboard",
+      "feature": "Business Dashboard",
+      "workflow": "",
+      "description": "Core APIs: GET /api/business/dashboard, GET /api/business/campaigns, POST /api/campaigns, GET /api/campaigns/:id, POST /api/campaigns/:id/invite. Key components: CampaignForm, ParticipantTable, KPIMetrics.",
+      "tags": ["note", "business", "campaigns"],
+      "status": "active",
+      "position": { "x": 860, "y": 1080 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "feature-kol-dashboard",
+      "type": "feature",
+      "label": "KOL Dashboard",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": null,
+      "feature": "KOL Dashboard",
+      "workflow": "",
+      "description": "KOL-side discovery, application, campaign tracking, and KPI submission flows.",
+      "tags": ["frontend", "kol", "dashboard"],
+      "status": "active",
+      "position": { "x": 0, "y": 1740 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-kol-overview",
+      "type": "workflow",
+      "label": "KOL Dashboard Overview",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-kol-dashboard",
+      "feature": "KOL Dashboard",
+      "workflow": "KOL Dashboard Overview",
+      "description": "Overview screen showing active campaigns, earnings, rating, and completion rate.",
+      "tags": ["route:/dashboard/kol", "overview"],
+      "status": "active",
+      "position": { "x": 260, "y": 1500 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-kol-browse-campaigns",
+      "type": "workflow",
+      "label": "Browse Campaigns",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-kol-dashboard",
+      "feature": "KOL Dashboard",
+      "workflow": "Browse Campaigns",
+      "description": "Open campaigns list with budget, requirements, and apply action.",
+      "tags": ["route:/dashboard/kol/campaigns", "browse"],
+      "status": "active",
+      "position": { "x": 260, "y": 1620 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-kol-apply-campaign",
+      "type": "workflow",
+      "label": "Apply Campaign",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-kol-dashboard",
+      "feature": "KOL Dashboard",
+      "workflow": "Apply Campaign",
+      "description": "Apply modal with message and confirm action.",
+      "tags": ["apply", "modal"],
+      "status": "active",
+      "position": { "x": 260, "y": 1740 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-kol-my-campaigns",
+      "type": "workflow",
+      "label": "My Campaigns",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-kol-dashboard",
+      "feature": "KOL Dashboard",
+      "workflow": "My Campaigns",
+      "description": "KOL campaign table with status tracking and KPI visibility.",
+      "tags": ["route:/dashboard/kol/my-campaigns", "tracking"],
+      "status": "active",
+      "position": { "x": 260, "y": 1860 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-kol-submit-kpi",
+      "type": "workflow",
+      "label": "Submit KPI",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-kol-dashboard",
+      "feature": "KOL Dashboard",
+      "workflow": "Submit KPI",
+      "description": "Manual KPI submission form with post URL, metrics, and screenshot upload.",
+      "tags": ["kpi", "submission"],
+      "status": "active",
+      "position": { "x": 260, "y": 1980 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "file-pages-kol-dashboard",
+      "type": "file",
+      "label": "pages.md • KOL Dashboard",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-kol-dashboard",
+      "feature": "KOL Dashboard",
+      "workflow": "",
+      "description": "KOL dashboard section inside the frontend pages architecture document.",
+      "tags": ["docs", "kol"],
+      "status": "active",
+      "position": { "x": 560, "y": 1740 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "note-kol-dashboard-summary",
+      "type": "note",
+      "label": "Note: campaign participation flow",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-kol-dashboard",
+      "feature": "KOL Dashboard",
+      "workflow": "",
+      "description": "Routes: /dashboard/kol, /dashboard/kol/campaigns, /dashboard/kol/my-campaigns. APIs: GET /api/kol/dashboard, GET /api/campaigns/open, POST /api/campaigns/:id/apply, POST /api/campaigns/:id/submit-metrics.",
+      "tags": ["note", "kol", "campaigns"],
+      "status": "active",
+      "position": { "x": 860, "y": 1740 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "feature-review-system",
+      "type": "feature",
+      "label": "Review System",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": null,
+      "feature": "Review System",
+      "workflow": "",
+      "description": "Review creation and display flows for KOL feedback.",
+      "tags": ["frontend", "reviews"],
+      "status": "active",
+      "position": { "x": 0, "y": 2280 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-review-business-to-kol",
+      "type": "workflow",
+      "label": "Review Business -> KOL",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-review-system",
+      "feature": "Review System",
+      "workflow": "Review Business -> KOL",
+      "description": "Review form with rating and comment fields.",
+      "tags": ["reviews", "form"],
+      "status": "active",
+      "position": { "x": 260, "y": 2220 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-review-display",
+      "type": "workflow",
+      "label": "Display Reviews",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-review-system",
+      "feature": "Review System",
+      "workflow": "Display Reviews",
+      "description": "Review list rendering with reusable review card components.",
+      "tags": ["reviews", "list"],
+      "status": "active",
+      "position": { "x": 260, "y": 2340 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "file-pages-review-system",
+      "type": "file",
+      "label": "pages.md • Review System",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-review-system",
+      "feature": "Review System",
+      "workflow": "",
+      "description": "Review system section inside the frontend pages architecture document.",
+      "tags": ["docs", "reviews"],
+      "status": "active",
+      "position": { "x": 560, "y": 2280 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "note-review-system-summary",
+      "type": "note",
+      "label": "Note: feedback primitives",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-review-system",
+      "feature": "Review System",
+      "workflow": "",
+      "description": "Components: ReviewCard, ReviewList. APIs: POST /api/reviews and GET /api/reviews?kolId=. Reusable review display should plug into public profile and campaign detail flows.",
+      "tags": ["note", "reviews", "reusable"],
+      "status": "active",
+      "position": { "x": 860, "y": 2280 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "feature-ranking-system",
+      "type": "feature",
+      "label": "Ranking System",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": null,
+      "feature": "Ranking System",
+      "workflow": "",
+      "description": "Ranking-specific UI components and data flow for leaderboard presentation.",
+      "tags": ["frontend", "ranking"],
+      "status": "active",
+      "position": { "x": 0, "y": 2700 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-ranking-page",
+      "type": "workflow",
+      "label": "Ranking Page",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-ranking-system",
+      "feature": "Ranking System",
+      "workflow": "Ranking Page",
+      "description": "Leaderboard view with top performer, badge, and score indicators.",
+      "tags": ["route:/ranking/kols", "leaderboard"],
+      "status": "active",
+      "position": { "x": 260, "y": 2700 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "file-pages-ranking-system",
+      "type": "file",
+      "label": "pages.md • Ranking System",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-ranking-system",
+      "feature": "Ranking System",
+      "workflow": "",
+      "description": "Ranking system section inside the frontend pages architecture document.",
+      "tags": ["docs", "ranking"],
+      "status": "active",
+      "position": { "x": 560, "y": 2700 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "note-ranking-system-summary",
+      "type": "note",
+      "label": "Note: leaderboard UI atoms",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-ranking-system",
+      "feature": "Ranking System",
+      "workflow": "",
+      "description": "Components: RankingTable, Badge, ScoreIndicator. API: GET /api/ranking. This section overlaps with the public KOL ranking route but focuses on reusable ranking primitives.",
+      "tags": ["note", "ranking", "ui"],
+      "status": "active",
+      "position": { "x": 860, "y": 2700 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "feature-frontend-foundation",
+      "type": "feature",
+      "label": "Frontend Foundation",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": null,
+      "feature": "Frontend Foundation",
+      "workflow": "",
+      "description": "Reusable UI system, recommended app structure, tech stack, and delivery roadmap.",
+      "tags": ["frontend", "foundation", "planning"],
+      "status": "active",
+      "position": { "x": 0, "y": 3240 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-foundation-ui-components",
+      "type": "workflow",
+      "label": "Global UI Components",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-frontend-foundation",
+      "feature": "Frontend Foundation",
+      "workflow": "Global UI Components",
+      "description": "Reusable component inventory for buttons, inputs, modals, tables, charts, avatars, and rating stars.",
+      "tags": ["ui", "reusable"],
+      "status": "active",
+      "position": { "x": 260, "y": 3060 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-foundation-nextjs-structure",
+      "type": "workflow",
+      "label": "Next.js Structure",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-frontend-foundation",
+      "feature": "Frontend Foundation",
+      "workflow": "Next.js Structure",
+      "description": "Recommended App Router structure for auth, public, dashboard, components, and lib folders.",
+      "tags": ["nextjs", "app-router"],
+      "status": "active",
+      "position": { "x": 260, "y": 3180 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-foundation-tech-stack",
+      "type": "workflow",
+      "label": "Frontend Tech Stack",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-frontend-foundation",
+      "feature": "Frontend Foundation",
+      "workflow": "Frontend Tech Stack",
+      "description": "Next.js App Router + TypeScript with Tailwind, shadcn/ui, TanStack Query, Recharts, and JWT/NextAuth.",
+      "tags": ["stack", "frontend"],
+      "status": "active",
+      "position": { "x": 260, "y": 3300 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "workflow-foundation-roadmap",
+      "type": "workflow",
+      "label": "Task Breakdown",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-frontend-foundation",
+      "feature": "Frontend Foundation",
+      "workflow": "Task Breakdown",
+      "description": "Phased delivery plan from MVP flows to analytics, automation, and AI recommendation UI.",
+      "tags": ["roadmap", "planning"],
+      "status": "draft",
+      "position": { "x": 260, "y": 3420 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "file-pages-frontend-foundation",
+      "type": "file",
+      "label": "pages.md • Frontend Foundation",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-frontend-foundation",
+      "feature": "Frontend Foundation",
+      "workflow": "",
+      "description": "Foundation and planning section inside the frontend pages architecture document.",
+      "tags": ["docs", "foundation"],
+      "status": "active",
+      "position": { "x": 560, "y": 3240 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "note-frontend-foundation-summary",
+      "type": "note",
+      "label": "Note: reusable system + roadmap",
+      "path": "docs/Architecture/frontend/pages.md",
+      "parentId": "feature-frontend-foundation",
+      "feature": "Frontend Foundation",
+      "workflow": "",
+      "description": "Reusable UI: Button, Input, Modal, Card, Table, Badge, Tabs, Dropdown, Pagination, Chart, Avatar, RatingStars. MVP focuses on auth, create/apply campaign, list, manual KPI, and basic ranking.",
+      "tags": ["note", "foundation", "roadmap"],
+      "status": "active",
+      "position": { "x": 860, "y": 3240 },
+      "lastSyncedAt": "2026-03-20T00:00:00.000Z"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-feature-public-website-workflow-public-homepage",
+      "source": "feature-public-website",
+      "target": "workflow-public-homepage",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-public-website-workflow-public-kol-ranking",
+      "source": "feature-public-website",
+      "target": "workflow-public-kol-ranking",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-public-website-workflow-public-kol-profile",
+      "source": "feature-public-website",
+      "target": "workflow-public-kol-profile",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-workflow-public-homepage-file-pages-public",
+      "source": "workflow-public-homepage",
+      "target": "file-pages-public",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-public-kol-ranking-file-pages-public",
+      "source": "workflow-public-kol-ranking",
+      "target": "file-pages-public",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-public-kol-profile-file-pages-public",
+      "source": "workflow-public-kol-profile",
+      "target": "file-pages-public",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-feature-public-website-note-public-website-summary",
+      "source": "feature-public-website",
+      "target": "note-public-website-summary",
+      "relation": "references",
+      "label": "summary note"
+    },
+    {
+      "id": "edge-feature-authentication-workflow-auth-register",
+      "source": "feature-authentication",
+      "target": "workflow-auth-register",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-authentication-workflow-auth-login",
+      "source": "feature-authentication",
+      "target": "workflow-auth-login",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-workflow-auth-register-file-pages-authentication",
+      "source": "workflow-auth-register",
+      "target": "file-pages-authentication",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-auth-login-file-pages-authentication",
+      "source": "workflow-auth-login",
+      "target": "file-pages-authentication",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-feature-authentication-note-authentication-summary",
+      "source": "feature-authentication",
+      "target": "note-authentication-summary",
+      "relation": "references",
+      "label": "summary note"
+    },
+    {
+      "id": "edge-feature-business-dashboard-workflow-business-overview",
+      "source": "feature-business-dashboard",
+      "target": "workflow-business-overview",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-business-dashboard-workflow-business-campaign-list",
+      "source": "feature-business-dashboard",
+      "target": "workflow-business-campaign-list",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-business-dashboard-workflow-business-create-campaign",
+      "source": "feature-business-dashboard",
+      "target": "workflow-business-create-campaign",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-business-dashboard-workflow-business-campaign-detail",
+      "source": "feature-business-dashboard",
+      "target": "workflow-business-campaign-detail",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-business-dashboard-workflow-business-invite-kol",
+      "source": "feature-business-dashboard",
+      "target": "workflow-business-invite-kol",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-workflow-business-overview-file-pages-business-dashboard",
+      "source": "workflow-business-overview",
+      "target": "file-pages-business-dashboard",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-business-campaign-list-file-pages-business-dashboard",
+      "source": "workflow-business-campaign-list",
+      "target": "file-pages-business-dashboard",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-business-create-campaign-file-pages-business-dashboard",
+      "source": "workflow-business-create-campaign",
+      "target": "file-pages-business-dashboard",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-business-campaign-detail-file-pages-business-dashboard",
+      "source": "workflow-business-campaign-detail",
+      "target": "file-pages-business-dashboard",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-business-invite-kol-file-pages-business-dashboard",
+      "source": "workflow-business-invite-kol",
+      "target": "file-pages-business-dashboard",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-feature-business-dashboard-note-business-dashboard-summary",
+      "source": "feature-business-dashboard",
+      "target": "note-business-dashboard-summary",
+      "relation": "references",
+      "label": "summary note"
+    },
+    {
+      "id": "edge-feature-kol-dashboard-workflow-kol-overview",
+      "source": "feature-kol-dashboard",
+      "target": "workflow-kol-overview",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-kol-dashboard-workflow-kol-browse-campaigns",
+      "source": "feature-kol-dashboard",
+      "target": "workflow-kol-browse-campaigns",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-kol-dashboard-workflow-kol-apply-campaign",
+      "source": "feature-kol-dashboard",
+      "target": "workflow-kol-apply-campaign",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-kol-dashboard-workflow-kol-my-campaigns",
+      "source": "feature-kol-dashboard",
+      "target": "workflow-kol-my-campaigns",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-kol-dashboard-workflow-kol-submit-kpi",
+      "source": "feature-kol-dashboard",
+      "target": "workflow-kol-submit-kpi",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-workflow-kol-overview-file-pages-kol-dashboard",
+      "source": "workflow-kol-overview",
+      "target": "file-pages-kol-dashboard",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-kol-browse-campaigns-file-pages-kol-dashboard",
+      "source": "workflow-kol-browse-campaigns",
+      "target": "file-pages-kol-dashboard",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-kol-apply-campaign-file-pages-kol-dashboard",
+      "source": "workflow-kol-apply-campaign",
+      "target": "file-pages-kol-dashboard",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-kol-my-campaigns-file-pages-kol-dashboard",
+      "source": "workflow-kol-my-campaigns",
+      "target": "file-pages-kol-dashboard",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-kol-submit-kpi-file-pages-kol-dashboard",
+      "source": "workflow-kol-submit-kpi",
+      "target": "file-pages-kol-dashboard",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-feature-kol-dashboard-note-kol-dashboard-summary",
+      "source": "feature-kol-dashboard",
+      "target": "note-kol-dashboard-summary",
+      "relation": "references",
+      "label": "summary note"
+    },
+    {
+      "id": "edge-feature-review-system-workflow-review-business-to-kol",
+      "source": "feature-review-system",
+      "target": "workflow-review-business-to-kol",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-review-system-workflow-review-display",
+      "source": "feature-review-system",
+      "target": "workflow-review-display",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-workflow-review-business-to-kol-file-pages-review-system",
+      "source": "workflow-review-business-to-kol",
+      "target": "file-pages-review-system",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-review-display-file-pages-review-system",
+      "source": "workflow-review-display",
+      "target": "file-pages-review-system",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-feature-review-system-note-review-system-summary",
+      "source": "feature-review-system",
+      "target": "note-review-system-summary",
+      "relation": "references",
+      "label": "summary note"
+    },
+    {
+      "id": "edge-feature-ranking-system-workflow-ranking-page",
+      "source": "feature-ranking-system",
+      "target": "workflow-ranking-page",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-workflow-ranking-page-file-pages-ranking-system",
+      "source": "workflow-ranking-page",
+      "target": "file-pages-ranking-system",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-feature-ranking-system-note-ranking-system-summary",
+      "source": "feature-ranking-system",
+      "target": "note-ranking-system-summary",
+      "relation": "references",
+      "label": "summary note"
+    },
+    {
+      "id": "edge-feature-frontend-foundation-workflow-foundation-ui-components",
+      "source": "feature-frontend-foundation",
+      "target": "workflow-foundation-ui-components",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-frontend-foundation-workflow-foundation-nextjs-structure",
+      "source": "feature-frontend-foundation",
+      "target": "workflow-foundation-nextjs-structure",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-frontend-foundation-workflow-foundation-tech-stack",
+      "source": "feature-frontend-foundation",
+      "target": "workflow-foundation-tech-stack",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-feature-frontend-foundation-workflow-foundation-roadmap",
+      "source": "feature-frontend-foundation",
+      "target": "workflow-foundation-roadmap",
+      "relation": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-workflow-foundation-ui-components-file-pages-frontend-foundation",
+      "source": "workflow-foundation-ui-components",
+      "target": "file-pages-frontend-foundation",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-foundation-nextjs-structure-file-pages-frontend-foundation",
+      "source": "workflow-foundation-nextjs-structure",
+      "target": "file-pages-frontend-foundation",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-foundation-tech-stack-file-pages-frontend-foundation",
+      "source": "workflow-foundation-tech-stack",
+      "target": "file-pages-frontend-foundation",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-workflow-foundation-roadmap-file-pages-frontend-foundation",
+      "source": "workflow-foundation-roadmap",
+      "target": "file-pages-frontend-foundation",
+      "relation": "documents",
+      "label": "documented in"
+    },
+    {
+      "id": "edge-feature-frontend-foundation-note-frontend-foundation-summary",
+      "source": "feature-frontend-foundation",
+      "target": "note-frontend-foundation-summary",
+      "relation": "references",
+      "label": "summary note"
+    }
+  ]
 }
 

@@ -4,6 +4,8 @@ import ReactFlow, {
   Controls,
   MiniMap,
   addEdge,
+  applyEdgeChanges,
+  applyNodeChanges,
   Connection,
   Edge as FlowEdge,
   Node as FlowNode,
@@ -143,23 +145,23 @@ export const GraphCanvas: React.FC<Props> = ({
   const handleNodesChange: typeof onNodesChange = useCallback(
     (changes) => {
       setNodes((nds) => {
-        const next = onNodesChange(changes, nds);
+        const next = applyNodeChanges(changes, nds);
         syncBackToGraph(next, edges);
         return next;
       });
     },
-    [edges, onNodesChange, setNodes, syncBackToGraph]
+    [edges, setNodes, syncBackToGraph]
   );
 
   const handleEdgesChange: typeof onEdgesChange = useCallback(
     (changes) => {
       setEdges((eds) => {
-        const next = onEdgesChange(changes, eds);
+        const next = applyEdgeChanges(changes, eds);
         syncBackToGraph(nodes, next);
         return next;
       });
     },
-    [nodes, onEdgesChange, setEdges, syncBackToGraph]
+    [nodes, setEdges, syncBackToGraph]
   );
 
   const handleConnect = useCallback(
